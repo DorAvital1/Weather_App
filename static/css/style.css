@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap');
+
+body, html {
+  background-color: antiquewhite;
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInAnimation ease 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+h2 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+     text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+text-align: center;
+}
+
+p {
+text-align: center;
+}
+
+.button {
+  border-radius: 8px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+icon-heart {
+color: red;
+}
+
+span {
+color: white;
+}
+
+p2 {
+  font-size: 28px;
+}
+
+input {
+font-size: 24px;
+  padding: 10px;
+  width: 300px;
+}
+
+.container {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.widget {
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    background: rgba(299,299,299, 0.5);
+}
+
+.widget .left {
+    position: absolute;
+    left: 0;
+    width: 200px;
+}
+
+.widget .right {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    color: black;
+    margin: 10px 0;
+}
+
+.icon {
+   width: 75%;
+   margin-bottom: -30px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.weather-status {
+    color: black;
+    text-align: center;
+    margin-top: 0;
+}
+
+.widget .right .city {
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    text-shadow: 1px 1px 5px #707070;
+}
+
+.widget .right .degree {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 1px 1px 5px #707070;
+}
+
+.widget .bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    color: black;
+    span: black;
+}
+
+.widget .bottom div {
+    margin: 5px 10px 5px 10px;
+    text-align: center;
+    line-height: 100%;
+    font-size: px12;
+    text-shadow: 1px 1px 5px #707070;
+}
+
+.back_button{
+text-align: center;
+}

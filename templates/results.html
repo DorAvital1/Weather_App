@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.png">
+    <title>Weather results</title>
+</head>
+<body>
+    <!--<a href="/">Back</a> = back to menu -->
+   <div class="back_button">
+       <a href="/"><button class="button"><span>Back </span></button></a>
+   </div>
+    <div class="container">
+        <!--weather widget -->
+        <div class="widget">
+            <div class="left">
+                <!--animation depending the condition = res['weather'][0]['main'] -->
+                <img src={{svg_file}} class="icon">
+                <h5 class="weather-status">{{condition}}</h5>
+            </div>
+            <div class="right">
+                <h5 class="city">{{city}}, {{country}}</h5>
+                <h5 class="degree">{{temp}}°C</h5>
+            </div>
+            <div class="bottom">
+                <div>
+                    wind speed: {{wind_speed}}
+                </div>
+                <div>
+                    humidity: {{humidity}}
+                </div>
+                <div>
+                    Feels like: {{feels_like}}°C
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

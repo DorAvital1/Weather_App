@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <title>Weather Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.png">
+</head>
+    <body>
+        <h2>Weather Dashboard in Flask</h2>
+        <div class="logo">
+            <img src="/static/logo.png" width="300" height="250" alt="img logo">
+        </div>
+        <form action="{{ url_for('render_results') }}" method="post">
+             <p2>
+                City name: <input placeholder="Please enter a city name" name="city_name">
+            </p2>
+            <button class="button"><span>Search </span></button>
+        </form>
+    </body>
+  <p><br>Made with <icon-heart>❤</icon-heart> by Dor Avital</p>
+</html>
