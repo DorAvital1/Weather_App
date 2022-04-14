@@ -22,7 +22,8 @@ def index():
 @app.route('/results', methods=['GET', 'POST'])  # Results page
 def render_results():
     city = request.form['city_name']
-    app_id = os.getenv("app_id") #extract api from env file
+    # app_id = os.getenv("app_id") #extract api from env file
+    app_id = os.environ["app_id"]
     URL = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={app_id}'
     res = requests.get(URL).json()  # Creating variables to transfer to results page
     print("MY DATA", res)
