@@ -7,4 +7,3 @@ and present it to the user using basic html and design with css.
 
 For your convenience, I pushed the project to a live server (Heroku - PAAS) so you can easily access the website from here:
 https://weatherapp124356.herokuapp.com/
-
