@@ -1,6 +1,6 @@
 import requests
 from datetime import *
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, abort
 from dotenv import load_dotenv
 import os
 
@@ -26,7 +26,7 @@ def render_results():
     app_id = os.environ["app_id"]
     URL = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={app_id}'
     res = requests.get(URL).json()  # Creating variables to transfer to results page
-    print("MY DATA", res)
+    print("Data from json:", res)
     country = res['sys']['country']
     humidity = res['main']['humidity']
     temp = res['main']['temp']
@@ -50,30 +50,31 @@ def render_results():
     svg_folder = '/static/animated/'
     if (condition == 'Clear') and (sunrise_hour < current_hour < sunset_hour):  # CLEAR SKY DAY
         svg_file = 'day.svg'
-    if (condition == 'Clear') and (current_hour > sunset_hour):  # CLEAR SKY NIGHT
+    elif (condition == 'Clear') and (current_hour > sunset_hour):  # CLEAR SKY NIGHT
         svg_file = 'night.svg'
-    if (condition == 'Clouds') and (sunrise_hour < current_hour < sunset_hour):  # CLOUDY DAY
+    elif (condition == 'Clouds') and (sunrise_hour < current_hour < sunset_hour):  # CLOUDY DAY
         svg_file = 'cloudy.svg'
-    if (condition == 'Clouds') and (current_hour > sunset_hour):  # CLOUDY NIGHT
+    elif (condition == 'Clouds') and (current_hour > sunset_hour):  # CLOUDY NIGHT
         svg_file = 'cloudy-night-3.svg'
-    if (condition == 'Snow') and (sunrise_hour < current_hour < sunset_hour):  # SNOWY DAY
+    elif (condition == 'Snow') and (sunrise_hour < current_hour < sunset_hour):  # SNOWY DAY
         svg_file = 'snowy-3.svg'
-    if (condition == 'Snow') and (current_hour > sunset_hour):  # SNOWY NIGHT
+    elif (condition == 'Snow') and (current_hour > sunset_hour):  # SNOWY NIGHT
         svg_file = 'snowy-6.svg'
-    if (condition == 'Rain') and (sunrise_hour < current_hour < sunset_hour):  # RAINY DAY
+    elif (condition == 'Rain') and (sunrise_hour < current_hour < sunset_hour):  # RAINY DAY
         svg_file = 'rainy-3.svg'
-    if (condition == 'Rain') and (current_hour > sunset_hour):  # RAINY NIGHT
+    elif (condition == 'Rain') and (current_hour > sunset_hour):  # RAINY NIGHT
         svg_file = 'rainy-6.svg'
-    if (condition == 'Rain') and (sunrise_hour < current_hour < sunset_hour):  # Thunderstorm DAY/NIGHT
+    elif (condition == 'Rain') and (sunrise_hour < current_hour < sunset_hour):  # Thunderstorm DAY/NIGHT
         svg_file = 'thunder.svg'
-
-    # creating the route for flask to get to the right animation (svg file)
-    svg_file = svg_folder + svg_file
+    else:
+        abort(404)
+    # creating the route for flask to get to the right animation svg file
+    animation = svg_folder + svg_file
 
     # Returning the values to the '/results' page
     return render_template('results.html', city=city.title(), country=country, humidity=humidity,
                            condition=condition, temp=round(temp), feels_like=round(feels_like),
-                           wind_speed=round(wind_speed), svg_file=svg_file)
+                           wind_speed=round(wind_speed), animation=animation)
     # transfer the data by jinja2 method {{}} to html files
 
 
